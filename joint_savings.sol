@@ -26,8 +26,8 @@ contract JointSavings {
     - A variable of type `address public` named `lastToWithdraw`
     - Two variables of type `uint public` named `lastWithdrawAmount` and `contractBalance`.
     */
-    address payable accountOne = 0x0c0669Cd5e60a6F4b8ce437E4a4A007093D368Cb;
-    address payable accountTwo = 0x7A1f3dFAa0a4a19844B606CD6e91d693083B12c0;
+    address payable accountOne;
+    address payable accountTwo;
     address public lastToWithdraw;
     uint public lastWithdrawAmount;
     uint public contractBalance;
@@ -43,10 +43,10 @@ contract JointSavings {
         require(address(this).balance >= amount, "Insufficient funds!");
        
         if (lastToWithdraw != recipient) {
-                lastToWithdraw == recipient;
+                lastToWithdraw = recipient;
                 recipient.transfer(amount);
-                lastWithdrawAmount == amount;
-                contractBalance == address(this).balance;
+                lastWithdrawAmount = amount;
+                contractBalance = address(this).balance;
         }
     }
     // Define a `public payable` function named `deposit`.
@@ -55,7 +55,7 @@ contract JointSavings {
         /*
         Call the `contractBalance` variable and set it equal to the balance of the contract by using `address(this).balance`.
         */
-        contractBalance == address(this).balance;
+        contractBalance = address(this).balance;
     }
 
     /*
@@ -64,8 +64,8 @@ contract JointSavings {
     function setAccounts(address payable account1, address payable account2) public{
 
         // Set the values of `accountOne` and `accountTwo` to `account1` and `account2` respectively.
-        accountOne == account1;
-        accountTwo == account2;
+        accountOne = account1;
+        accountTwo = account2;
     }
 
     // Fallback function
